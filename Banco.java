@@ -60,8 +60,7 @@ public class Banco {
 		String telefone = s.nextLine();
         clientes.add(new Cliente(nome, cpf, telefone));
         System.out.println("\nCadastrado com sucesso!\n\n");
-        
-        System.out.println(clientes);
+    
     }
 
     public void alterarCliente () {
