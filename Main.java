@@ -6,7 +6,7 @@ public class Main {
 		Menu mainMenu =  new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes", "Sair"));
 		Menu contaMenu =  new Menu("Menu Conta", Arrays.asList("Cadastrar", "Alterar", "Excluir", "Voltar"));
 		Menu clienteMenu =  new Menu("Menu Cliente", Arrays.asList("Cadastrar", "Alterar", "Excluir", "Voltar"));
-		Menu operacoesMenu =  new Menu("Menu Operacoes", Arrays.asList("Transferencia", "Saque", "Deposito", "Emprestimo"));
+		Menu operacoesMenu =  new Menu("Menu Operacoes", Arrays.asList("Transferencia", "Saque", "Deposito", "Voltar"));
 
 		int opc1 = -1;
 		int opc2 = -1;
@@ -55,6 +55,8 @@ public class Main {
 							case 2:
 								break;
 							case 3:
+								break;
+							case 4:
 								break;
 						}
 					}
