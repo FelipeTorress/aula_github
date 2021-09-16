@@ -7,6 +7,7 @@ public class Main {
 		Menu contaMenu =  new Menu("Menu Conta", Arrays.asList("Cadastrar", "Alterar", "Excluir", "Voltar"));
 		Menu clienteMenu =  new Menu("Menu Cliente", Arrays.asList("Cadastrar", "Alterar", "Excluir", "Voltar"));
 		Menu operacoesMenu =  new Menu("Menu Operacoes", Arrays.asList("Transferencia", "Saque", "Deposito", "Voltar"));
+		Banco banco = new Banco();
 
 		int opc1 = -1;
 		int opc2 = -1;
@@ -35,6 +36,7 @@ public class Main {
 						opc2 = clienteMenu.getSelection();
 						switch (opc2){
 							case 1:
+								banco.cadastrarCliente();
 								break;
 							case 2:
 								break;

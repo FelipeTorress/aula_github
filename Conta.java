@@ -28,7 +28,7 @@ public class Conta {
         }
         else if(operacao == 2 && saldo >= valor){
             saldo = saldo - valor;
-            return true
+            return true;
         }else{
             return false;
         }
