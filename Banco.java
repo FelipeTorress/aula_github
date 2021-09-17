@@ -34,7 +34,35 @@ public class Banco {
 
 
     public void cadastrarConta () {
+        System.out.println("\n\nCADASTRO DE CONTA\n");
+        System.out.println("\nDiga o CPF do cliente: ");
+		String cpf = s.nextLine();
+        Cliente cli = getCliente(cpf);
 
+        while (cli==null){
+            System.out.println("\nCPF não cadastrado! Cliente não existe! Digite um novo: [-1 para cancelar]");
+            cpf = s.nextLine();
+            if (cpf.equals("-1")){
+                return;
+            }else{
+                cli = getCliente(cpf);
+            }
+        }
+
+        ArrayList<Conta> contasCli = pesquisarContasCliente(cli.getCpf());
+        int tamContaCli = contasCli.size()+1;
+
+
+        String confirma = "";
+        while(!confirma.equals("s") && !confirma.equals("S") && !confirma.equals("n") && !confirma.equals("N")){
+            System.out.println("\nConfirma a Criacao da conta?[s - para confirmar][n - para cancelar] ");
+		    confirma = s.nextLine();
+        }
+        if(confirma.equals("n") || confirma.equals("N")) return;
+        
+        contas.add(new Conta("1606", Integer.toString(tamContaCli), cli));
+        System.out.println("\nConta criada com sucesso\n");
+        System.out.println("\nAgencia: 1606, Numero da Conta: "+tamContaCli+"\n\n");
     }
     public void alterarConta () {
 
@@ -46,7 +74,7 @@ public class Banco {
 
 
     public void cadastrarCliente () {
-        System.out.println("\nCADASTRO DE CLIENTE\n");
+        System.out.println("\n\nCADASTRO DE CLIENTE\n");
         System.out.println("\nCPF do cliente: ");
 		String cpf = s.nextLine();
         while (getCliente(cpf)!=null){
