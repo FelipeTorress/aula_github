@@ -21,6 +21,14 @@ public class Conta {
         return this.cliente;
     }
 
+    public String getAgencia(){
+        return this.agencia;
+    }
+
+    public String getNumeroConta(){
+        return this.numeroConta;
+    }
+
     public boolean setSaldo(double valor, int operacao){
         if (operacao == 1){
             saldo = saldo + valor;
@@ -33,4 +41,9 @@ public class Conta {
             return false;
         }
     }
+
+    public void setAgencia(String agencia){
+        this.agencia = agencia;
+    }
+
 }
