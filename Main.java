@@ -20,6 +20,7 @@ public class Main {
 						opc2 = contaMenu.getSelection();
 						switch (opc2){
 							case 1:
+								banco.cadastrarConta();
 								break;
 							case 2:
 								break;
