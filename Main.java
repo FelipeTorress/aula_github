@@ -23,6 +23,7 @@ public class Main {
 								banco.cadastrarConta();
 								break;
 							case 2:
+								banco.alterarConta();
 								break;
 							case 3:
 								break;
