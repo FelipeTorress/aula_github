@@ -30,6 +30,15 @@ public class Banco {
         }
         return cont;
     }
+    
+    private Conta getConta(String ag, String num) {
+    	for(Conta c : contas) {
+    		if(c.getAgencia().equals(ag) && c.getNumeroConta().equals(num)) {
+    			return c;
+    		}
+    	}
+    	return null;
+    }
 
 
 
@@ -178,7 +187,49 @@ public class Banco {
 
 
     public void transferencia () {
-
+    	System.out.println("\n\n Informe a agência e número da conta provedora\n");
+    	String ag1 = s.nextLine();
+    	String num1 = s.nextLine();
+    	
+    	System.out.println("\n\n Informe a agência e número da conta receptora\n");
+    	String ag2 = s.nextLine();
+    	String num2 = s.nextLine();
+    	
+    	Conta conta1 = getConta(ag1,num1);
+    	while(conta1 == null) {
+    		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
+        	ag1 = s.nextLine();
+        	if(ag1.equals("-1")) {
+        		return;
+        	}
+        	num1 = s.nextLine();
+    	}
+    	Conta conta2 = getConta(ag2,num2);
+    	while(conta2 == null) {
+    		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta receptora\n [digite -1 se quiser cancelar]");
+        	ag2 = s.nextLine();
+        	if(ag2.equals("-1")) {
+        		return;
+        	}
+        	num2 = s.nextLine();
+    	}
+    	
+    	System.out.println("\n\n Informe o valor da transferência:\n");
+    	double valor = s.nextDouble();
+    	while(valor<=0) {
+    		System.out.println("\n\n Informe um valor valido:\n [digite -1 caso queira cancelar]");
+        	valor = s.nextDouble();
+        	if(valor == -1) {
+        		return;
+        	}
+    	}
+    	
+    	if(conta1.setSaldo(valor, 2)) {
+    		boolean transf = conta2.setSaldo(valor, 1);
+    	}else {
+    		System.out.println("\n\n Saldo insuficiente\n");
+    	}
+    	
     }
     public void saque () {
 

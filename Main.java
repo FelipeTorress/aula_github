@@ -55,6 +55,7 @@ public class Main {
 						opc2 = operacoesMenu.getSelection();
 						switch (opc1){
 							case 1:
+								banco.transferencia();
 								break;
 							case 2:
 								break;
