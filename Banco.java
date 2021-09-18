@@ -60,10 +60,10 @@ public class Banco {
 
         ArrayList<Conta> contasCli = pesquisarContasCliente(cli.getCpf());
         int tamContaCli;
-        if(contasCli.size() == 0){
-            tamContaCli = contasCli.size()+1;
+        if(contas.size() == 0){
+            tamContaCli = 1;
         }else{
-            tamContaCli =  Integer.parseInt(contasCli.get(contasCli.size()-1).getNumeroConta())+ 1;
+            tamContaCli =  Integer.parseInt(contas.get(contas.size()-1).getNumeroConta())+ 1;
         }
             
         String confirma = "";
