@@ -203,6 +203,7 @@ public class Banco {
         		return;
         	}
         	num1 = s.nextLine();
+        	conta1 = getConta(ag1,num1);
     	}
     	Conta conta2 = getConta(ag2,num2);
     	while(conta2 == null) {
@@ -212,6 +213,7 @@ public class Banco {
         		return;
         	}
         	num2 = s.nextLine();
+        	conta2 = getConta(ag2,num2);
     	}
     	
     	System.out.println("\n\n Informe o valor da transferência:\n");
@@ -226,12 +228,41 @@ public class Banco {
     	
     	if(conta1.setSaldo(valor, 2)) {
     		boolean transf = conta2.setSaldo(valor, 1);
+    		System.out.println("\n\n Transferência realizada com sucesso\n");
     	}else {
     		System.out.println("\n\n Saldo insuficiente\n");
     	}
     	
     }
     public void saque () {
+    	System.out.println("\n\n Informe a agência e número da conta\n");
+    	String ag = s.nextLine();
+    	String num = s.nextLine();
+    	
+      	Conta conta = getConta(ag,num);
+    	while(conta == null) {
+    		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
+        	ag = s.nextLine();
+        	if(ag.equals("-1")) {
+        		return;
+        	}
+        	num = s.nextLine();
+        	conta = getConta(ag,num);
+    	}
+    	System.out.println("\n\n Informe o valor do saque:\n");
+    	double valor = s.nextDouble();
+    	while(valor<=0) {
+    		System.out.println("\n\n Informe um valor valido:\n [digite -1 caso queira cancelar]");
+        	valor = s.nextDouble();
+        	if(valor == -1) {
+        		return;
+        	}
+    	}
+    	if(conta.setSaldo(valor, 2)) {
+    		System.out.println("\n\n Saque realizada com sucesso\n");
+    	}else {
+    		System.out.println("\n\n Saldo insuficiente\n");
+    	}
 
     }
     public void deposito () {
