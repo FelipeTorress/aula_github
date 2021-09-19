@@ -53,11 +53,12 @@ public class Main {
 					opc2 = -1;
 					while (opc2 != 4){
 						opc2 = operacoesMenu.getSelection();
-						switch (opc1){
+						switch (opc2){
 							case 1:
 								banco.transferencia();
 								break;
 							case 2:
+								banco.saque();
 								break;
 							case 3:
 								break;
