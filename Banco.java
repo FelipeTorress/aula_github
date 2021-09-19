@@ -18,6 +18,16 @@ public class Banco {
         }
         return null;
     }
+    
+    private Conta getConta(String num,String agencia) {
+    	for(Conta c : contas) {
+    		
+    		if(c.getNumeroConta().equals(num) && c.getAgencia().equals(agencia)){
+    			return c;
+    		}
+    	}
+    	return null;
+    }
 
     private ArrayList<Conta> pesquisarContasCliente(String cpf){
         ArrayList<Conta> cont = new ArrayList<Conta>();
@@ -145,6 +155,29 @@ public class Banco {
         return;
     }
     public void excluirConta () {
+    	
+    	System.out.println("\n\nEXCLUSAO DE CONTA\n");
+        System.out.println("\nDiga o Numero da Agencia: ");
+        String agencia = s.nextLine();
+        System.out.println("\nDiga o Numero da Conta: ");
+		String numConta = s.nextLine();
+		
+		Conta c = getConta(numConta,agencia);
+		
+		while (c==null){
+            System.out.println("\nConta ou agencia não existe! Digite a conta novamente: [-1 para cancelar]");
+            numConta = s.nextLine();
+            if (numConta.equals("-1")){
+                return;
+            }else{
+            	System.out.println("\nDiga o Numero da Agencia: ");
+                agencia = s.nextLine();
+                c = getConta(numConta,agencia);
+            }
+        }
+		
+		contas.remove(c);
+		System.out.println("\nCONTA EXCLUIDA! ");
 
     }
 
@@ -157,8 +190,9 @@ public class Banco {
         while (getCliente(cpf)!=null){
             System.out.println("\nCPF ja utilizado! Digite um novo: [-1 para cancelar]");
             cpf = s.nextLine();
+            if (cpf.equals("-1")) return;
         }
-        if (cpf.equals("-1")) return;
+        
         System.out.println("\nNome do cliente: ");
 		String nome = s.nextLine();
         System.out.println("\nTelefone do cliente: ");
@@ -172,6 +206,25 @@ public class Banco {
 
     }
     public void excluirCliente () {
+    	
+    	System.out.println("\n\nEXCLUSAO DE CLIENTE\n");
+        System.out.println("\nDiga o CPF do Cliente: ");
+		String cpf = s.nextLine();
+		
+		Cliente cli = getCliente(cpf);
+		
+		while (cli==null){
+            System.out.println("\nCliente não cadastrado! Digite novamente: [-1 para cancelar]");
+            cpf = s.nextLine();
+            if (cpf.equals("-1")){
+                return;
+            }else{
+                cli = getCliente(cpf);
+            }
+        }
+		
+		clientes.remove(cli);
+		System.out.println("\nCLIENTE EXCLUIDO! ");
 
     }
 
