@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 public class Main {
@@ -26,6 +27,7 @@ public class Main {
 								banco.alterarConta();
 								break;
 							case 3:
+								banco.excluirConta();
 								break;
 							case 4:
 								break;
@@ -43,6 +45,7 @@ public class Main {
 							case 2:
 								break;
 							case 3:
+								banco.excluirCliente();
 								break;
 							case 4:
 								break;
