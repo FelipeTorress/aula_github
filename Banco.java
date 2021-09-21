@@ -213,6 +213,24 @@ public class Banco {
 
     public void alterarCliente () {
 
+        System.out.println("\n\nALTERACAO DADOS DE CLIENTE\n");
+        System.out.println("\nDiga o CPF do cliente: ");
+		String cpf = s.nextLine();
+        Cliente cli = getCliente(cpf);
+        while (cli==null){
+            System.out.println("\nCPF não cadastrado! Cliente não existe! Digite um novo: [-1 para cancelar]");
+            cpf = s.nextLine();
+            if (cpf.equals("-1")){
+                return;
+            }else{
+                cli = getCliente(cpf);
+            }
+        }
+        System.out.println("\nTelefone do cliente para alterar: ");
+		String telefone = s.nextLine();
+        cli.setTelefone(telefone);
+        System.out.println("\nAlterado com sucesso!\n\n");
+
     }
     public void excluirCliente () {
     	
