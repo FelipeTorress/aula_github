@@ -319,7 +319,32 @@ public class Banco {
 
     }
     public void deposito () {
-
+        System.out.println("\n\n Informe a agência e número da conta\n");
+    	String ag = s.nextLine();
+    	String num = s.nextLine();
+    	
+      	Conta conta = getConta(ag,num);
+    	while(conta == null) {
+    		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
+        	ag = s.nextLine();
+        	if(ag.equals("-1")) {
+        		return;
+        	}
+        	num = s.nextLine();
+        	conta = getConta(ag,num);
+    	}
+    	System.out.println("\n\n Informe o valor do deposito:\n");
+    	double valor = s.nextDouble();
+    	while(valor<=0) {
+    		System.out.println("\n\n Informe um valor valido:\n [digite -1 caso queira cancelar]");
+        	valor = s.nextDouble();
+        	if(valor == -1) {
+        		return;
+        	}
+    	}
+    	if(conta.setSaldo(valor, 1)) {
+    		System.out.println("\n\n Deposito realizado com sucesso\n");
+    	}
     }
     
     
