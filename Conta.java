@@ -1,6 +1,4 @@
 
-import java.io.IOException;
-
 public class Conta {
     private String agencia;
     private String numeroConta;

@@ -1,7 +1,6 @@
 
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Banco {
@@ -40,16 +39,6 @@ public class Banco {
         }
         return cont;
     }
-    
-    private Conta getConta(String ag, String num) {
-    	for(Conta c : contas) {
-    		if(c.getAgencia().equals(ag) && c.getNumeroConta().equals(num)) {
-    			return c;
-    		}
-    	}
-    	return null;
-    }
-
 
 
     public void cadastrarConta () {
@@ -68,7 +57,6 @@ public class Banco {
             }
         }
 
-        ArrayList<Conta> contasCli = pesquisarContasCliente(cli.getCpf());
         int tamContaCli;
         if(contas.size() == 0){
             tamContaCli = 1;
@@ -261,12 +249,8 @@ public class Banco {
     	System.out.println("\n\n Informe a agência e número da conta provedora\n");
     	String ag1 = s.nextLine();
     	String num1 = s.nextLine();
-    	
-    	System.out.println("\n\n Informe a agência e número da conta receptora\n");
-    	String ag2 = s.nextLine();
-    	String num2 = s.nextLine();
-    	
-    	Conta conta1 = getConta(ag1,num1);
+
+        Conta conta1 = getConta(num1,ag1);
     	while(conta1 == null) {
     		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
         	ag1 = s.nextLine();
@@ -274,9 +258,15 @@ public class Banco {
         		return;
         	}
         	num1 = s.nextLine();
-        	conta1 = getConta(ag1,num1);
+        	conta1 = getConta(num1,ag1);
     	}
-    	Conta conta2 = getConta(ag2,num2);
+    	
+    	System.out.println("\n\n Informe a agência e número da conta receptora\n");
+    	String ag2 = s.nextLine();
+    	String num2 = s.nextLine();
+    	
+    	
+    	Conta conta2 = getConta(num2,ag2);
     	while(conta2 == null) {
     		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta receptora\n [digite -1 se quiser cancelar]");
         	ag2 = s.nextLine();
@@ -284,7 +274,7 @@ public class Banco {
         		return;
         	}
         	num2 = s.nextLine();
-        	conta2 = getConta(ag2,num2);
+        	conta2 = getConta(num2,ag2);
     	}
     	
     	System.out.println("\n\n Informe o valor da transferência:\n");
@@ -298,7 +288,7 @@ public class Banco {
     	}
     	
     	if(conta1.setSaldo(valor, 2)) {
-    		boolean transf = conta2.setSaldo(valor, 1);
+            conta2.setSaldo(valor, 1);
     		System.out.println("\n\n Transferência realizada com sucesso\n");
     	}else {
     		System.out.println("\n\n Saldo insuficiente\n");
@@ -310,7 +300,7 @@ public class Banco {
     	String ag = s.nextLine();
     	String num = s.nextLine();
     	
-      	Conta conta = getConta(ag,num);
+      	Conta conta = getConta(num, ag);
     	while(conta == null) {
     		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
         	ag = s.nextLine();
@@ -318,7 +308,7 @@ public class Banco {
         		return;
         	}
         	num = s.nextLine();
-        	conta = getConta(ag,num);
+        	conta = getConta(num, ag);
     	}
     	System.out.println("\n\n Informe o valor do saque:\n");
     	double valor = s.nextDouble();
@@ -341,7 +331,7 @@ public class Banco {
     	String ag = s.nextLine();
     	String num = s.nextLine();
     	
-      	Conta conta = getConta(ag,num);
+      	Conta conta = getConta(num,ag);
     	while(conta == null) {
     		System.out.println("\n\n Conta não encontrada, informe novamente a agência e número da conta provedora\n [digite -1 se quiser cancelar]");
         	ag = s.nextLine();
@@ -349,7 +339,7 @@ public class Banco {
         		return;
         	}
         	num = s.nextLine();
-        	conta = getConta(ag,num);
+        	conta = getConta(num,ag);
     	}
     	System.out.println("\n\n Informe o valor do deposito:\n");
     	double valor = s.nextDouble();
