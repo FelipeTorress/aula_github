@@ -43,6 +43,7 @@ public class Main {
 								banco.cadastrarCliente();
 								break;
 							case 2:
+								banco.alterarCliente();
 								break;
 							case 3:
 								banco.excluirCliente();
@@ -64,6 +65,7 @@ public class Main {
 								banco.saque();
 								break;
 							case 3:
+								banco.deposito();
 								break;
 							case 4:
 								break;
